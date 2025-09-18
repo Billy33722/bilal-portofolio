@@ -72,18 +72,57 @@ function setupMobileMenu() {
     const mainNav = document.getElementById('mainNav');
     
     if (menuToggle && mainNav) {
-        menuToggle.addEventListener('click', function() {
-            const isExpanded = mainNav.getAttribute('aria-expanded') === 'true';
-            mainNav.setAttribute('aria-expanded', !isExpanded);
-            menuToggle.setAttribute('aria-expanded', !isExpanded);
+        let touchStartY = 0;
+        let touchEndY = 0;
+        
+        // Prevent menu from opening on scroll
+        menuToggle.addEventListener('touchstart', function(e) {
+            touchStartY = e.touches[0].clientY;
+        });
+        
+        menuToggle.addEventListener('touchend', function(e) {
+            touchEndY = e.changedTouches[0].clientY;
+            const touchDiff = Math.abs(touchStartY - touchEndY);
             
-            // Close menu when clicking on a link
-            const navLinks = mainNav.querySelectorAll('a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mainNav.setAttribute('aria-expanded', 'false');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                });
+            // Only open menu if it's a tap (not a swipe)
+            if (touchDiff < 10) {
+                const isExpanded = mainNav.getAttribute('aria-expanded') === 'true';
+                mainNav.setAttribute('aria-expanded', !isExpanded);
+                menuToggle.setAttribute('aria-expanded', !isExpanded);
+                
+                // Toggle body class to prevent scroll
+                if (!isExpanded) {
+                    document.body.classList.add('menu-open');
+                } else {
+                    document.body.classList.remove('menu-open');
+                }
+            }
+        });
+        
+        // Click handler for non-touch devices
+        menuToggle.addEventListener('click', function(e) {
+            // Only handle click if it's not a touch device
+            if (!('ontouchstart' in window)) {
+                const isExpanded = mainNav.getAttribute('aria-expanded') === 'true';
+                mainNav.setAttribute('aria-expanded', !isExpanded);
+                menuToggle.setAttribute('aria-expanded', !isExpanded);
+                
+                // Toggle body class to prevent scroll
+                if (!isExpanded) {
+                    document.body.classList.add('menu-open');
+                } else {
+                    document.body.classList.remove('menu-open');
+                }
+            }
+        });
+        
+        // Close menu when clicking on a link
+        const navLinks = mainNav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                document.body.classList.remove('menu-open');
             });
         });
     }
@@ -984,6 +1023,34 @@ function setupCarousel() {
         }
     });
 
+    // Touch support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    track.addEventListener('touchstart', function(e) {
+        touchStartX = e.touches[0].clientX;
+    });
+
+    track.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].clientX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const swipeDistance = touchStartX - touchEndX;
+
+        if (Math.abs(swipeDistance) > swipeThreshold) {
+            if (swipeDistance > 0) {
+                // Swipe left - next slide
+                nextSlide();
+            } else {
+                // Swipe right - previous slide
+                prevSlide();
+            }
+        }
+    }
+
     // Initialize
     createDots();
     updateCarousel();
@@ -1419,6 +1486,7 @@ document.addEventListener('keydown', (e) => {
         if (mainNav && mainNav.getAttribute('aria-expanded') === 'true') {
             mainNav.setAttribute('aria-expanded', 'false');
             menuToggle.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('menu-open');
         }
     }
 });
@@ -1432,6 +1500,7 @@ document.addEventListener('click', (e) => {
         if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
             mainNav.setAttribute('aria-expanded', 'false');
             menuToggle.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('menu-open');
         }
     }
 });
