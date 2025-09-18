@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portafolio</title>
+  <title>Portfolio</title>
   <!-- Primary SEO -->
   <meta name="description" content="Bilal Khasakhanov — Full‑Stack developer (frontend, backend, hosting, design). I build fast, accessible, and user‑friendly web applications." />
   <meta name="keywords" content="Bilal Khasakhanov, Full‑Stack Developer, Web Developer, Frontend, Backend, Portfolio" />
@@ -71,7 +71,7 @@
 <body>
   <header class="site-header">
     <div class="container nav">
-      <a class="brand" href="#home">Portafolio</a>
+      <a class="brand" href="#home">Portfolio</a>
       <button id="menuToggle" class="icon-button" aria-label="Toggle menu">
         <span class="icon"></span>
       </button>
@@ -82,6 +82,7 @@
         <a href="#projects" data-i18n="nav.projects">Projects</a>
         <a href="#about" data-i18n="nav.about">About</a>
         <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
         <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme"></button>
         <button id="langToggle" class="lang-toggle" aria-label="Toggle language" data-lang="en">EN</button>
@@ -177,6 +178,14 @@
           <h2 data-i18n="projects.title">Projects</h2>
           <button class="button view-all-btn" id="viewAllBtn" data-i18n="projects.viewAll">View All</button>
         </div>
+        <div class="project-filters">
+          <button class="project-filter active" data-filter="all">All</button>
+          <button class="project-filter" data-filter="React">React</button>
+          <button class="project-filter" data-filter="Node.js">Node.js</button>
+          <button class="project-filter" data-filter="WordPress">WordPress</button>
+          <button class="project-filter" data-filter="Next.js">Next.js</button>
+          <button class="project-filter" data-filter="E-commerce">E-commerce</button>
+        </div>
         <div class="carousel-container">
           <button class="carousel-arrow carousel-arrow-left" id="prevBtn" aria-label="Previous projects">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -185,9 +194,9 @@
           </button>
           <div class="carousel-wrapper">
             <div class="carousel-track" id="carouselTrack">
-              <article class="card card-3d magnetic ripple">
+              <article class="card card-3d magnetic ripple" data-technologies="WordPress,Elementor,PHP,MySQL">
                 <div class="image-wrapper">
-                  <img src="C:\my portafolio site\Portafolio\IMG\teplotec.jpg" alt="Teplotec handyman services website preview" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='https://picsum.photos/1200/675?random=101';" />
+                  <img src="C:\my portfolio site\Portfolio\IMG\teplotec.jpg" alt="Teplotec handyman services website preview" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='https://picsum.photos/1200/675?random=101';" />
                 </div>
                 <h3 data-i18n="projects.teplotec.title">Teplotec</h3>
                 <p data-i18n="projects.teplotec.desc">A modern services website for handyman and technical solutions in Belgium. Focus on clear service structure, quick booking, and trust-building UI.</p>
@@ -200,7 +209,7 @@
                 </div>
                 <a class="link" href="https://teplotec.be/" target="_blank" rel="noopener" data-i18n="projects.viewSite">View site</a>
               </article>
-              <article class="card">
+              <article class="card" data-technologies="React,Node.js,MongoDB">
                 <div class="image-wrapper">
                   <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=60" alt="React and Node.js web app screenshot" loading="lazy" />
                 </div>
@@ -214,7 +223,7 @@
                 </div>
                 <a class="link" href="#" target="_blank" rel="noopener">View project</a>
               </article>
-              <article class="card">
+              <article class="card" data-technologies="Astro,TypeScript">
                 <div class="image-wrapper">
                   <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=60" alt="Static site with Astro and API content" loading="lazy" />
                 </div>
@@ -228,7 +237,7 @@
                 </div>
                 <a class="link" href="#" target="_blank" rel="noopener">View project</a>
               </article>
-              <article class="card">
+              <article class="card" data-technologies="Next.js,E-commerce,Stripe">
                 <div class="image-wrapper">
                   <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=60" alt="E-commerce platform screenshot" loading="lazy" />
                 </div>
@@ -242,7 +251,7 @@
                 </div>
                 <a class="link" href="#" target="_blank" rel="noopener">View project</a>
               </article>
-              <article class="card">
+              <article class="card" data-technologies="React,React Native">
                 <div class="image-wrapper">
                   <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=60" alt="Mobile app interface screenshot" loading="lazy" />
                 </div>
@@ -256,7 +265,7 @@
                 </div>
                 <a class="link" href="#" target="_blank" rel="noopener">View project</a>
               </article>
-              <article class="card">
+              <article class="card" data-technologies="Next.js,React">
                 <div class="image-wrapper">
                   <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=60" alt="Portfolio website screenshot" loading="lazy" />
                 </div>
@@ -360,7 +369,9 @@
               <p data-i18n="testimonials.testimonial1.text">"Bilal delivered an exceptional website that exceeded our expectations. The design is modern, responsive, and perfectly captures our brand identity."</p>
             </div>
             <div class="testimonial-author">
-              <div class="author-avatar">👨‍💼</div>
+              <div class="author-avatar">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&q=80" alt="John Smith" loading="lazy">
+              </div>
               <div class="author-info">
                 <h4 data-i18n="testimonials.testimonial1.name">John Smith</h4>
                 <span data-i18n="testimonials.testimonial1.role">CEO, TechStart</span>
@@ -373,7 +384,9 @@
               <p data-i18n="testimonials.testimonial2.text">"Professional, reliable, and incredibly talented. Bilal transformed our online presence and helped us increase our conversion rate by 40%."</p>
             </div>
             <div class="testimonial-author">
-              <div class="author-avatar">👩‍💼</div>
+              <div class="author-avatar">
+                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=100&q=80" alt="Sarah Johnson" loading="lazy">
+              </div>
               <div class="author-info">
                 <h4 data-i18n="testimonials.testimonial2.name">Sarah Johnson</h4>
                 <span data-i18n="testimonials.testimonial2.role">Marketing Director, RetailCo</span>
@@ -386,13 +399,36 @@
               <p data-i18n="testimonials.testimonial3.text">"Outstanding work! Bilal's attention to detail and technical expertise made our e-commerce platform a huge success. Highly recommended!"</p>
             </div>
             <div class="testimonial-author">
-              <div class="author-avatar">👨‍💻</div>
+              <div class="author-avatar">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Mike Chen" loading="lazy">
+              </div>
               <div class="author-info">
                 <h4 data-i18n="testimonials.testimonial3.name">Mike Chen</h4>
                 <span data-i18n="testimonials.testimonial3.role">Founder, E-Shop Pro</span>
               </div>
             </div>
           </div>
+        </div>
+        
+        <div class="share-buttons">
+          <button class="share-btn" data-platform="twitter">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+            </svg>
+            Share on Twitter
+          </button>
+          <button class="share-btn" data-platform="linkedin">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            Share on LinkedIn
+          </button>
+          <button class="share-btn" data-platform="facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+            Share on Facebook
+          </button>
         </div>
       </div>
     </section>
@@ -464,7 +500,7 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-content">
-        <p><span id="year"></span> Portafolio — <span data-i18n="footer.copyright">All rights reserved.</span></p>
+        <p><span id="year"></span> Portfolio — <span data-i18n="footer.copyright">All rights reserved.</span></p>
         <div class="footer-stats">
           <span class="stat-item">
             <span class="stat-number" id="visitCount">0</span>
