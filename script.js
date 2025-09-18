@@ -75,46 +75,23 @@ function setupMobileMenu() {
         let touchStartY = 0;
         let touchEndY = 0;
         
-        // Prevent menu from opening on scroll
-        menuToggle.addEventListener('touchstart', function(e) {
-            touchStartY = e.touches[0].clientY;
-        });
-        
-        menuToggle.addEventListener('touchend', function(e) {
-            touchEndY = e.changedTouches[0].clientY;
-            const touchDiff = Math.abs(touchStartY - touchEndY);
-            
-            // Only open menu if it's a tap (not a swipe)
-            if (touchDiff < 10) {
-                const isExpanded = mainNav.getAttribute('aria-expanded') === 'true';
-                mainNav.setAttribute('aria-expanded', !isExpanded);
-                menuToggle.setAttribute('aria-expanded', !isExpanded);
-                
-                // Toggle body class to prevent scroll
-                if (!isExpanded) {
-                    document.body.classList.add('menu-open');
-                } else {
-                    document.body.classList.remove('menu-open');
-                }
-            }
-        });
-        
-        // Click handler for non-touch devices
+        // Simple click/tap handler for mobile menu
         menuToggle.addEventListener('click', function(e) {
-            // Only handle click if it's not a touch device
-            if (!('ontouchstart' in window)) {
-                const isExpanded = mainNav.getAttribute('aria-expanded') === 'true';
-                mainNav.setAttribute('aria-expanded', !isExpanded);
-                menuToggle.setAttribute('aria-expanded', !isExpanded);
-                
-                // Toggle body class to prevent scroll
-                if (!isExpanded) {
-                    document.body.classList.add('menu-open');
-                } else {
-                    document.body.classList.remove('menu-open');
-                }
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const isExpanded = mainNav.getAttribute('aria-expanded') === 'true';
+            mainNav.setAttribute('aria-expanded', !isExpanded);
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+            
+            // Toggle body class to prevent scroll
+            if (!isExpanded) {
+                document.body.classList.add('menu-open');
+            } else {
+                document.body.classList.remove('menu-open');
             }
         });
+        
         
         // Close menu when clicking on a link
         const navLinks = mainNav.querySelectorAll('a');
